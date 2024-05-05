@@ -49,7 +49,7 @@ function Home() {
             <div key={post.$id} className="bg-white rounded-lg shadow-md p-6">
               <h3 className="text-xl font-bold mb-2">{post.title}</h3>
               <PostCard {...post} />
-              <p className="text-gray-700">{parse(post.content)}</p>
+              <div className="text-gray-700">{parse(post.content)}</div>
             </div>
           ))}
         </div>

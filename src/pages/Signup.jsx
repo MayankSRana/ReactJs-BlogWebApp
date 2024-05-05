@@ -16,6 +16,7 @@ function Signup() {
 
   const signup = async (data) => {
     setError("");
+    console.log("signup form data", data);
     try {
       const userData = await authservices.createAccount(data);
       console.log("createAccount", userData);
@@ -71,19 +72,20 @@ function Signup() {
             })}
           />
         </div>
+
+        <div className="mt-4 mb-4 text-gray-600">
+          <Button
+            type="submit"
+            className="w-full bg-indigo-500 text-white font-semibold py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
+          >
+            Create Account
+          </Button>
+          Already have an account?{" "}
+          <Link to="/login" className="text-indigo-600 font-semibold">
+            Sign in
+          </Link>
+        </div>
       </form>
-      <div className="mt-4 mb-4 text-gray-600">
-        <Button
-          type="submit"
-          className="w-full bg-indigo-500 text-white font-semibold py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
-        >
-          Create Account
-        </Button>
-        Already have an account?{" "}
-        <Link to="/login" className="text-indigo-600 font-semibold">
-          Sign in
-        </Link>
-      </div>
     </div>
   );
 }

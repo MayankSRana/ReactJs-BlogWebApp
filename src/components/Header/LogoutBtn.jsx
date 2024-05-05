@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import authservices from "../../AppwriteAuthentication/auth_service";
 import { logout } from "../../store/AuthSlice";
-function LogOutBtn() {
+function LogOutBtn({ className = "" }) {
   const dispatch = useDispatch();
   const handleLogout = () => {
     authservices
@@ -16,7 +16,7 @@ function LogOutBtn() {
   };
   return (
     <button
-      className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+      className={`text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${className}`}
       onClick={handleLogout}
     >
       Logout

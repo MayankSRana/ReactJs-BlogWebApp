@@ -21,7 +21,7 @@ export class AuthServices {
       // console.log("createAccount", userAccount);
       if (userAccount) {
         console.log("createAccount", userAccount);
-        return await this.login(email, password);
+        return await this.login({ email, password });
       } else {
         return userAccount;
       }

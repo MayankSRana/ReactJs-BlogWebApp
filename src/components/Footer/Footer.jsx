@@ -5,7 +5,7 @@ const Footer = () => {
   const authStatus = useSelector((state) => state.status);
 
   return (
-    <footer className="bg-gray-800 py-6 min-h-screen">
+    <footer className="bg-gray-800 py-6 fixed bottom-0 w-full ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-wrap justify-center md:justify-start mb-4 md:mb-0">
@@ -38,22 +38,16 @@ const Footer = () => {
             {authStatus && (
               <div>
                 <Link
-                  to="/allpost"
+                  to="/all-posts"
                   className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   All Post
                 </Link>
                 <Link
-                  to="/addpost"
+                  to="/add-post"
                   className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Add Post
-                </Link>
-                <Link
-                  to="/logout"
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Logout
                 </Link>
               </div>
             )}

@@ -74,8 +74,8 @@ const PostForm = ({ post }) => {
   }, [watch, slugTransform, setValue]);
 
   return (
-    <div className="flex flex-col md:flex-row">
-      <form className="md:w-2/3 md:px-2">
+    <div className="flex flex-col md:flex-row mb-11">
+      <form onSubmit={handleSubmit(submit)} className="md:w-2/3 md:px-2">
         <Input
           label="Title"
           type="text"
@@ -104,38 +104,38 @@ const PostForm = ({ post }) => {
           defaultValue={getValues("content")}
           id="rte-postform"
         />
+
+        <div className="md:w-1/3 md:px-2">
+          <Input
+            label="Featured Image :"
+            type="file"
+            className="mb-4"
+            id="image-postform"
+            accept="image/png, image/jpg, image/jpeg, image/gif"
+            {...register("image", { required: !post })}
+          />
+
+          {post && (
+            <div className="w-full mb-4">
+              <img
+                src={databaseservice.getFilePreview(post.featuredImage)}
+                alt={post.title}
+                className="rounded-lg"
+              />
+            </div>
+          )}
+          <Select
+            options={["active", "inactive"]}
+            label="Status"
+            className="mb-4"
+            {...register("status", { required: true })}
+          />
+
+          <Button type="submit" bgColor={post ? "bg-green-500" : undefined}>
+            {post ? "Update" : "Submit"}
+          </Button>
+        </div>
       </form>
-
-      <div className="md:w-1/3 md:px-2">
-        <Input
-          label="Featured Image :"
-          type="file"
-          className="mb-4"
-          id="image-postform"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("image", { required: !post })}
-        />
-
-        {post && (
-          <div className="w-full mb-4">
-            <img
-              src={databaseservice.getFilePreview(post.featuredImage)}
-              alt={post.title}
-              className="rounded-lg"
-            />
-          </div>
-        )}
-        <Select
-          options={["active", "inactive"]}
-          label="Status"
-          className="mb-4"
-          {...register("status", { required: true })}
-        />
-
-        <Button type="submit" bgColor={post ? "bg-green-500" : undefined}>
-          {post ? "Update" : "Submit"}
-        </Button>
-      </div>
     </div>
   );
 };

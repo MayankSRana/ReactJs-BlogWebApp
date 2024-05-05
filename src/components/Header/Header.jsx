@@ -10,15 +10,15 @@ function DropdownMenu({ navItems, navigate }) {
   return (
     <div className="relative z-10">
       <div className="md:hidden absolute left-0 top-full mt-2 w-full max-w-xs">
-        <div className="rounded-md bg-gray-800 shadow-xs">
-          <div className="py-1">
+        <div className="rounded-md bg-gray-800 shadow-xs w-20">
+          <div className="py-1 w-full">
             <ul>
               {navItems.map(
                 (item) =>
                   item.active && (
-                    <li key={item.name} className="text-white">
+                    <li key={item.name} className="text-white ">
                       <button
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium w-full text-left"
+                        className="text-gray-300  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xs font-medium w-full text-left"
                         onClick={() => navigate(item.url)}
                       >
                         {item.name}
@@ -28,7 +28,7 @@ function DropdownMenu({ navItems, navigate }) {
               )}
               {authStatus && (
                 <li>
-                  <LogOutBtn />
+                  <LogOutBtn className="text-xs" />
                 </li>
               )}
             </ul>
